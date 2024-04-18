@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import { Link,Route,Routes } from 'react-router-dom';
+import {Home,AddAcademy,UpdateAcademy,AcademiesList} from './component'
 
-function App() {
+
+const App = () => {
+
+ 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <nav className="navbar navbar-expand navbar-dark bg-dark">
+        <div className="navbar-nav mr-auto">
+          <li className="nav-item">
+            <Link to={"/academiesList"} className="nav-link">
+            Academies List
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to={"/addAcademy"} className="nav-link">
+              Add Academy
+            </Link>
+          </li>
+        </div>
+      </nav>
+
+      <div className="container mt-3">
+        <Routes>
+          <Route path="/" element={<Home/>} />
+          <Route path="/academiesList" element={<AcademiesList/>} />
+          <Route path="/addAcademy" element={<AddAcademy/>} />
+          <Route path="/updateAcademy/:code" element={<UpdateAcademy/>} />
+        </Routes>
+      </div>
     </div>
   );
-}
+};
 
 export default App;
